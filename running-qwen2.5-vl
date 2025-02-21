@@ -1,0 +1,15 @@
+My configuration
+2x RTX A6000 48GB
+2x RTX A8000 48GB
+
+Need to set both GLOO_SOCKET_IFNAME and NCCL_SOCKET_IFNAME for it to work
+
+Running cluster
+
+bash run_cluster.sh \
+                vllm/vllm-openai \
+                172.20.170.19 \
+                --head \
+                /mnt/data/.cache/huggingface \
+                -e VLLM_HOST_IP=172.20.170.19 -e GLOO_SOCKET_IFNAME=eno1 -e NCCL_SOCKET_IFNAME=eno1
+vllm serve Qwen/Qwen2.5-VL-72B-Instruct -tp 2 -pp 2 --dtype half --max-model-len 16000  --max-num-seqs 1  --limit-mm-per-prompt image=1,video=0
