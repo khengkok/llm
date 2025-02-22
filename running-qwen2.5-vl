@@ -2,6 +2,8 @@ My configuration
 2x RTX A6000 48GB
 2x RTX A8000 48GB
 
+pip install flash-attn --no-build-isolation
+
 Need to set both GLOO_SOCKET_IFNAME and NCCL_SOCKET_IFNAME for it to work
 
 Running cluster
